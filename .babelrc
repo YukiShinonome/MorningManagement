@@ -1,0 +1,151 @@
+{
+  "plugins": [
+    "@babel/proposal-object-rest-spread",
+    "@babel/syntax-dynamic-import"
+  ],
+
+  "env": {
+    "production:client": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "ie": "11"
+            },
+            "modules": false
+          }
+        ],
+        "@babel/react"
+      ],
+      "plugins": [
+        "@babel/proposal-object-rest-spread",
+        "@babel/syntax-dynamic-import",
+        [
+          "transform-imports",
+          {
+            "lodash/fp": {
+              "transform": "lodash/fp/${member}",
+              "preventFullImport": true
+            },
+            "date-fns": {
+              "transform": "date-fns/${member}",
+              "preventFullImport": true
+            },
+            "react-router": {
+              "transform": "react-router/lib/${member}",
+              "preventFullImport": true
+            },
+            "redux-form": {
+              "transform": "redux-form/es/${member}",
+              "preventFullImport": true
+            },
+            "react-virtualized": {
+              "transform": "react-virtualized/dist/es/${member}",
+              "preventFullImport": true
+            }
+          }
+        ]
+      ]
+    },
+
+    "production:server": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "node": "current"
+            },
+            "modules": false
+          }
+        ],
+        "@babel/react"
+      ]
+    },
+
+    "development:client": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "ie": "11"
+            },
+            "modules": false
+          }
+        ],
+        "@babel/react"
+      ],
+      "plugins": [
+        "@babel/proposal-object-rest-spread",
+        "@babel/syntax-dynamic-import",
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true
+          }
+        ],
+        "react-hot-loader/babel"
+      ]
+    },
+
+    "development:server": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "node": "current"
+            },
+            "modules": false
+          }
+        ],
+        "@babel/react"
+      ],
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "ssr": true
+          }
+        ]
+      ]
+    },
+
+    "test:unit": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "node": "6"
+            }
+          }
+        ],
+        "@babel/react",
+        "power-assert"
+      ]
+    },
+
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "node": "8"
+            }
+          }
+        ],
+        "@babel/react",
+        "power-assert"
+      ],
+      "plugins": [
+        "require-context-hook",
+        "@babel/proposal-object-rest-spread",
+        "@babel/syntax-dynamic-import"
+      ]
+    }
+  }
+}
