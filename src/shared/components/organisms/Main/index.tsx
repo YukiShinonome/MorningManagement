@@ -9,7 +9,5 @@ export default React.memo(function Main(props: Props) {
 });
 
 const Root = styled.div`
-  margin: 0 auto;
-  padding-top: 200px;
-  text-align: center;
+  color: #fff;
 `;
