@@ -16,6 +16,7 @@ import searchList, { State as SearchListstate } from "./searchList";
 import style, { State as StyleState } from "./style";
 import hackerNews, { State as HackerNewsState } from "./hackerNews";
 import uploadSample, { State as UploadSampleState } from "./uploadSample";
+import home, { State as HomeState } from "./home";
 
 export type RootState = {
   app: {
@@ -27,6 +28,7 @@ export type RootState = {
     loading: LoadingState;
     agreedSample: AgreedSampleState;
     uploadSample: UploadSampleState;
+    home: HomeState;
   };
   page: {
     search: SearchState;
@@ -51,6 +53,7 @@ export default combineReducers({
     loading,
     agreedSample,
     uploadSample,
+    home,
   }),
   page: pageScopeReducer(
     combineReducers({
@@ -75,6 +78,10 @@ export function mastersSelector(state: RootState): MastersState {
 
 export function authSelector(state: RootState): AuthState {
   return state.app.auth;
+}
+
+export function homeSelector(state: RootState): HomeState {
+  return state.app.home;
 }
 
 export function counterSelector(state: RootState): CounterState {

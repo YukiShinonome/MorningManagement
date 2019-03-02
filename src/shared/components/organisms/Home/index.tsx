@@ -1,17 +1,14 @@
-import React from "react";
-import { compose, shouldUpdate } from "recompose";
-import { sendAnalytics } from "react-redux-analytics";
-import {
-  siteSections,
-  onAsyncLoaderLoaded,
-} from "../../../redux/analytics/utils";
+import { connect } from 'react-redux'
+import Home from './Home'
+import { currentTimeUpdate } from '../../../redux/modules/home'
+import { homeSelector } from '../../../redux/modules/reducer';
 
-export default compose(
-  sendAnalytics({
-    ...siteSections("home", "top"),
-    onDataReady: onAsyncLoaderLoaded,
+export default connect(
+  (state) => ({
+    today: homeSelector(state as any).today,
+    time: homeSelector(state as any).time,
   }),
-  shouldUpdate(() => false),
-)(function Home(props) {
-  return <div>Home!</div>;
-});
+  (dispatch) => ({
+    handleCurrentTimeUpdate: () => dispatch(currentTimeUpdate()),
+  }),
+)(Home);
