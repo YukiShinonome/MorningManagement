@@ -1,33 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import { mainColor } from "../../utils/color";
+import { mainColor, bgColor } from "../../utils/color";
+import CurrentTime from "./CurrentTime";
 
 type Props = {
   today: string,
   time: string,
-  itemList: any,
   handleCurrentTimeUpdate: Function,
+  itemList: any,
 };
 
 export default function Home(props: Props) {
-  const { today, time, itemList, handleCurrentTimeUpdate } = props;
-
-  setInterval(handleCurrentTimeUpdate, 1000);
+  const { today, time, handleCurrentTimeUpdate, itemList } = props;
 
   return (
     <Root>
       <TimeArea>
-        <DateData>{today}</DateData>
-        <TimeData>{time}</TimeData>
+        <CurrentTime today={today} time={time} handleCurrentTimeUpdate={handleCurrentTimeUpdate} />
       </TimeArea>
       <WeatherArea>weather</WeatherArea>
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
         <ItemListContainer>
-          {/* {Object.values(itemList).map((item: any) => (
-            <div>{item}</div>
-          ))} */}
-          {/* <div>{itemList.item}</div> */}
+          {Object.keys(itemList).map((idx: string) => (
+            <ItemList>{itemList[idx].item}</ItemList>
+          ))}
         </ItemListContainer>
       </NecessitiesArea>
     </Root>
@@ -52,13 +49,6 @@ const TimeArea = styled.div`
   border: solid 1px ${mainColor};
   box-shadow: 0 0 50px 3px ${mainColor} inset;
 `;
-const DateData = styled.div`
-  font-size: 30px;
-`;
-const TimeData = styled.div`
-  font-size: 80px;
-  text-align: center;
-`;
 const WeatherArea = styled.div`
   grid-area: areaB;
   margin: 10px;
@@ -76,8 +66,19 @@ const NecessitiesArea = styled.div`
 const Title = styled.h2`
   text-align: center;
   margin-top: 10px;
+  margin-bottom: 30px;
 `;
 const ItemListContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+const ItemList = styled.div`
+  font-size: 20px;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${bgColor};
+  }
 `;
