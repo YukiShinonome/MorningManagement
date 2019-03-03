@@ -7,6 +7,7 @@ export default connect(
   (state) => ({
     today: homeSelector(state as any).today,
     time: homeSelector(state as any).time,
+    itemList: homeSelector(state as any).itemList,
   }),
   (dispatch) => ({
     handleCurrentTimeUpdate: () => dispatch(currentTimeUpdate()),
