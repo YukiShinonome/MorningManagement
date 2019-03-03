@@ -5,11 +5,12 @@ import { mainColor } from "../../utils/color";
 type Props = {
   today: string,
   time: string,
+  itemList: any,
   handleCurrentTimeUpdate: Function,
 };
 
 export default function Home(props: Props) {
-  const { today, time, handleCurrentTimeUpdate } = props;
+  const { today, time, itemList, handleCurrentTimeUpdate } = props;
 
   setInterval(handleCurrentTimeUpdate, 1000);
 
@@ -20,7 +21,15 @@ export default function Home(props: Props) {
         <TimeData>{time}</TimeData>
       </TimeArea>
       <WeatherArea>weather</WeatherArea>
-      <NecessitiesArea>持ち物リスト</NecessitiesArea>
+      <NecessitiesArea>
+        <Title>持ち物リスト</Title>
+        <ItemListContainer>
+          {/* {Object.values(itemList).map((item: any) => (
+            <div>{item}</div>
+          ))} */}
+          {/* <div>{itemList.item}</div> */}
+        </ItemListContainer>
+      </NecessitiesArea>
     </Root>
   );
 };
@@ -63,4 +72,12 @@ const NecessitiesArea = styled.div`
   padding: 10px;
   border: solid 1px ${mainColor};
   box-shadow: 0 0 50px 3px ${mainColor} inset;
+`;
+const Title = styled.h2`
+  text-align: center;
+  margin-top: 10px;
+`;
+const ItemListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
