@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { mainColor, bgColor } from "../../utils/color";
+import { mainColor } from "../../utils/color";
 import CurrentTime from "./CurrentTime";
+import Item from "./Item";
 
 type Props = {
   today: string,
@@ -23,7 +24,10 @@ export default function Home(props: Props) {
         <Title>持ち物リスト</Title>
         <ItemListContainer>
           {Object.keys(itemList).map((idx: string) => (
-            <ItemList>{itemList[idx].item}</ItemList>
+            // <ItemList prepared={itemList[idx].prepared}>{itemList[idx].item}</ItemList>
+            <ItemList key={idx}>
+              <Item idx={idx} itemList={itemList} />
+            </ItemList>
           ))}
         </ItemListContainer>
       </NecessitiesArea>
@@ -72,13 +76,4 @@ const ItemListContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ItemList = styled.div`
-  font-size: 20px;
-  text-align: center;
-  padding: 10px 0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${bgColor};
-  }
-`;
+const ItemList = styled.div``;
