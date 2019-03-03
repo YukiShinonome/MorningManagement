@@ -44,8 +44,10 @@ const INITIAL_STATE = {
 export default handleActions(
   {
     [CURRENT_TIME_UPDATE]: (state) => ({
+      ...state,
       today: format(new Date(), "YYYY/MM/DD（dddd）", {locale: ja}),
       time: format(new Date(), "hh:mm:ss"),
+      // itemList: state.itemList,
     }),
   },
   INITIAL_STATE,
