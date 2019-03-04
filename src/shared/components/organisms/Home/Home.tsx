@@ -5,31 +5,33 @@ import CurrentTime from "./CurrentTime";
 import Item from "./Item";
 
 type Props = {
+  count: number,
   today: string,
   time: string,
   handleCurrentTimeUpdate: Function,
   itemList: any,
+  handlePreparedCheck: Function,
 };
 
 export default function Home(props: Props) {
-  const { today, time, handleCurrentTimeUpdate, itemList } = props;
+  const { count, today, time, handleCurrentTimeUpdate, itemList, handlePreparedCheck } = props;
 
   return (
     <Root>
       <TimeArea>
         <CurrentTime today={today} time={time} handleCurrentTimeUpdate={handleCurrentTimeUpdate} />
       </TimeArea>
-      <WeatherArea>weather</WeatherArea>
+      <WeatherArea>天気</WeatherArea>
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
         <ItemListContainer>
           {Object.keys(itemList).map((idx: string) => (
-            // <ItemList prepared={itemList[idx].prepared}>{itemList[idx].item}</ItemList>
             <ItemList key={idx}>
-              <Item idx={idx} itemList={itemList} />
+              <Item idx={idx} itemList={itemList} handlePreparedCheck={handlePreparedCheck} />
             </ItemList>
           ))}
         </ItemListContainer>
+        {/* <div>count: {count}</div> */}
       </NecessitiesArea>
     </Root>
   );
