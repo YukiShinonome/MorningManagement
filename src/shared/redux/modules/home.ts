@@ -23,10 +23,12 @@ export type State = {
   time: string,
   itemList: any,
   count: number,
+  prepared_all_check: boolean,
 };
 
 const INITIAL_STATE = {
   count: 0,
+  prepared_all_check: false,
   today: format(new Date(), "YYYY/MM/DD（dddd）", {locale: ja}),
   time: format(new Date(), "hh:mm:ss"),
   itemList: [
@@ -54,11 +56,21 @@ export default handleActions<State, any>(
       time: format(new Date(), "hh:mm:ss"),
     }),
     [PREPARED_CHECK]: (state, action) => {
-      console.log(action);
+      // console.log(action);
       const itemListCopy = state.itemList.slice();
       itemListCopy[action.payload].prepared = itemListCopy[action.payload].prepared ? false : true;
-      // itemListCopy[0].prepared = itemListCopy[0].prepared ? false : true;
-      console.log(itemListCopy);
+      // console.log(itemListCopy);
+      let num = 0;
+      for ( let item of itemListCopy ) {
+        // console.log(item.prepared);
+        num = item.prepared ? (num + 1) : num;
+      }
+      if (num === itemListCopy.length) {
+        state.prepared_all_check = true;
+      } else {
+        state.prepared_all_check = false;
+      }
+      // console.log(state.prepared_all_check);
 
       return {
         ...state,
