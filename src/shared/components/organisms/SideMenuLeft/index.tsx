@@ -53,13 +53,9 @@ const Root = styled.header`
   color: white;
   /* position: fixed; */
 `;
-
 const NavLinks = styled.nav``;
-
 const Items = styled.ul``;
-
 const Item = styled.li``;
-
 const Link = styled(ReactRouterLink)`
   display: block;
   color: #fff;
@@ -71,7 +67,6 @@ const Link = styled(ReactRouterLink)`
     background-color: ${bgColor};
   }
 `;
-
 const IndexLink = styled(ReactRouterIndexLink)`
   color: #fff;
   background-color: ${props => (props.selected ? bgColor : "transparent")};

@@ -11,17 +11,28 @@ type Props = {
   handleCurrentTimeUpdate: Function,
   itemList: any,
   handlePreparedCheck: Function,
+  prepared_all_check: boolean,
 };
 
 export default function Home(props: Props) {
-  const { count, today, time, handleCurrentTimeUpdate, itemList, handlePreparedCheck } = props;
+  const {
+    count,
+    today,
+    time,
+    handleCurrentTimeUpdate,
+    itemList,
+    handlePreparedCheck,
+    prepared_all_check,
+  } = props;
 
   return (
     <Root>
       <TimeArea>
         <CurrentTime today={today} time={time} handleCurrentTimeUpdate={handleCurrentTimeUpdate} />
       </TimeArea>
-      <WeatherArea>天気</WeatherArea>
+      <WeatherArea>
+        <Title>天気</Title>
+      </WeatherArea>
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
         <ItemListContainer>
@@ -32,6 +43,7 @@ export default function Home(props: Props) {
           ))}
         </ItemListContainer>
         {/* <div>count: {count}</div> */}
+        {prepared_all_check && <CheckOK>準備OK!!</CheckOK>}
       </NecessitiesArea>
     </Root>
   );
@@ -71,7 +83,7 @@ const NecessitiesArea = styled.div`
 `;
 const Title = styled.h2`
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 30px;
 `;
 const ItemListContainer = styled.div`
@@ -79,3 +91,7 @@ const ItemListContainer = styled.div`
   flex-direction: column;
 `;
 const ItemList = styled.div``;
+const CheckOK = styled.div`
+  text-align: center;
+  font-size: 80px;
+`;
