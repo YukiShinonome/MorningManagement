@@ -23,8 +23,10 @@ export default function CurrentTime(props: Props) {
 const Root = styled.div``;
 const DateData = styled.div`
   font-size: 30px;
+  margin-left: 20px;
 `;
 const TimeData = styled.div`
   font-size: 80px;
   text-align: center;
+  margin-top: -10px;
 `;

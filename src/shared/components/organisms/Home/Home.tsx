@@ -65,25 +65,28 @@ const TimeArea = styled.div`
   margin: 10px;
   padding: 10px;
   border: solid 1px ${mainColor};
-  box-shadow: 0 0 50px 3px ${mainColor} inset;
+  box-shadow: 0 0 100px 3px ${mainColor} inset;
+  overflow-y: auto;
 `;
 const WeatherArea = styled.div`
   grid-area: areaB;
   margin: 10px;
   padding: 10px;
   border: solid 1px ${mainColor};
-  box-shadow: 0 0 50px 3px ${mainColor} inset;
+  box-shadow: 0 0 100px 3px ${mainColor} inset;
+  overflow-y: auto;
 `;
 const NecessitiesArea = styled.div`
   grid-area: areaC;
   margin: 10px;
   padding: 10px;
   border: solid 1px ${mainColor};
-  box-shadow: 0 0 50px 3px ${mainColor} inset;
+  box-shadow: 0 0 100px 3px ${mainColor} inset;
+  overflow-y: auto;
 `;
 const Title = styled.h2`
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 30px;
 `;
 const ItemListContainer = styled.div`
