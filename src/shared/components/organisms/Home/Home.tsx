@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { mainColor } from "../../utils/color";
+import { mainColor, bgColor } from "../../utils/color";
 import CurrentTime from "./CurrentTime";
 import Item from "./Item";
 
@@ -30,9 +30,9 @@ export default function Home(props: Props) {
       <TimeArea>
         <CurrentTime today={today} time={time} handleCurrentTimeUpdate={handleCurrentTimeUpdate} />
       </TimeArea>
-      <WeatherArea>
-        <Title>天気</Title>
-      </WeatherArea>
+      <AnimationArea>
+        <Title>アニメーション</Title>
+      </AnimationArea>
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
         <ItemListContainer>
@@ -43,7 +43,7 @@ export default function Home(props: Props) {
           ))}
         </ItemListContainer>
         {/* <div>count: {count}</div> */}
-        {prepared_all_check && <CheckOK>準備OK!!</CheckOK>}
+        <CheckOK allChecked={prepared_all_check}>準備OK!!</CheckOK>
       </NecessitiesArea>
     </Root>
   );
@@ -68,7 +68,7 @@ const TimeArea = styled.div`
   box-shadow: 0 0 100px 3px ${mainColor} inset;
   overflow-y: auto;
 `;
-const WeatherArea = styled.div`
+const AnimationArea = styled.div`
   grid-area: areaB;
   margin: 10px;
   padding: 10px;
@@ -94,7 +94,11 @@ const ItemListContainer = styled.div`
   flex-direction: column;
 `;
 const ItemList = styled.div``;
+interface CheckProps {
+  allChecked: boolean,
+}
 const CheckOK = styled.div`
   text-align: center;
   font-size: 80px;
+  color: ${(props: CheckProps) => props.allChecked ? "#fff" : bgColor};
 `;
