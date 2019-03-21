@@ -13,7 +13,6 @@ const PREPARED_CHECK = 'home/prepared_check';
  */
 export const currentTimeUpdate = createAction(CURRENT_TIME_UPDATE);
 export const preparedCheck = createAction(PREPARED_CHECK, (idx: any) => idx);
-// console.log(preparedCheck(5));
 
 /**
  * Initial state
@@ -62,7 +61,6 @@ export default handleActions<State, any>(
       // console.log(itemListCopy);
       let num = 0;
       for ( let item of itemListCopy ) {
-        // console.log(item.prepared);
         num = item.prepared ? (num + 1) : num;
       }
       if (num === itemListCopy.length) {
