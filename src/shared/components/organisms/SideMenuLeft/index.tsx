@@ -44,6 +44,11 @@ export default React.memo(function Header(props: Props) {
           ))}
         </Items>
       </NavLinks>
+      {/* <ColorList>
+        <ColorTitle>Color</ColorTitle>
+        <Color>blue</Color>
+        <Color>aqua</Color>
+      </ColorList> */}
     </Root>
   );
 } as any);
@@ -51,6 +56,9 @@ export default React.memo(function Header(props: Props) {
 const Root = styled.header`
   text-align: center;
   color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   /* position: fixed; */
 `;
 const NavLinks = styled.nav``;
@@ -78,3 +86,20 @@ const IndexLink = styled(ReactRouterIndexLink)`
     background-color: ${bgColor};
   }
 `;
+// const ColorList = styled.div`
+//   margin-top: auto;
+//   margin-bottom: 10px;
+//   border-top: solid 1px ${mainColor};
+// `;
+// const ColorTitle = styled.div`
+//   font-size: 20px;
+//   padding: 10px 0;
+// `;
+// const Color = styled.div`
+//   padding: 12px 0;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: ${bgColor};
+//   }
+// `;
