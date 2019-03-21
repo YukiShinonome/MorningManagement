@@ -31,8 +31,12 @@ const Item = styled.div`
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  width: 150px;
+  margin: 0 auto;
+  transition: 0.3s ease-out;
 
   &:hover {
+    width: 100%;
     background-color: ${bgColor};
   }
 `;
