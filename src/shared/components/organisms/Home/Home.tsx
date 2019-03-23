@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { mainColor, bgColor } from "../../utils/color";
 import CurrentTime from "./CurrentTime";
 import Item from "./Item";
@@ -32,6 +32,8 @@ export default function Home(props: Props) {
       </TimeArea>
       <AnimationArea>
         <Title>アニメーション</Title>
+        <Box />
+        <Box />
       </AnimationArea>
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
@@ -75,6 +77,52 @@ const AnimationArea = styled.div`
   border: solid 1px ${mainColor};
   box-shadow: 0 0 100px 3px ${mainColor} inset;
   overflow-y: auto;
+`;
+const rotation = keyframes`
+  0% {
+    transform: scale(.3);
+  }
+
+  20% {
+    transform: scale(.3);
+  }
+
+  60% {
+    transform: scale(.6) rotate(-45deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(180deg);
+  }
+`;
+const rotationReverse = keyframes`
+  0% {
+    transform: scale(.3);
+  }
+
+  20% {
+    transform: scale(.3);
+  }
+
+  60% {
+    transform: scale(.6) rotate(45deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(-180deg);
+  }
+`;
+const Box = styled.div`
+  margin: 80px auto;
+  width: 100px;
+  height: 100px;
+  background: ${mainColor};
+  animation: ${rotation} 2s infinite alternate;
+
+  &:hover {
+    background-color: skyblue;
+    animation-name: ${rotationReverse};
+  }
 `;
 const NecessitiesArea = styled.div`
   grid-area: areaC;
