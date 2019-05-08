@@ -21,7 +21,6 @@ export type State = {
   today: string,
   time: string,
   itemList: any,
-  count: number,
   prepared_all_check: boolean,
 };
 
@@ -72,7 +71,6 @@ export default handleActions<State, any>(
 
       return {
         ...state,
-        count: state.count + 1,
         itemList: itemListCopy,
       }
     },

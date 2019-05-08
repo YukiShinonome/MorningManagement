@@ -16,7 +16,6 @@ type Props = {
 
 export default function Home(props: Props) {
   const {
-    count,
     today,
     time,
     handleCurrentTimeUpdate,
@@ -44,7 +43,6 @@ export default function Home(props: Props) {
             </ItemList>
           ))}
         </ItemListContainer>
-        {/* <div>count: {count}</div> */}
         <CheckOK allChecked={prepared_all_check}>準備OK!!</CheckOK>
       </NecessitiesArea>
     </Root>
