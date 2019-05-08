@@ -20,7 +20,7 @@ export const preparedCheck = createAction(PREPARED_CHECK, (idx: any) => idx);
 export type State = {
   today: string,
   time: string,
-  itemList: any,
+  itemList: {item: string, prepared: boolean}[],
   prepared_all_check: boolean,
 };
 

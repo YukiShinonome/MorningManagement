@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { bgColor } from "../../utils/color";
-import { sendAnalytics } from "react-redux-analytics";
-import { string } from "prop-types";
 
 type Props = {
-  idx: string,
-  itemList: any,
+  idx: number,
+  itemList: {item: string, prepared: boolean}[],
   handlePreparedCheck: any,
 };
 
@@ -18,7 +16,7 @@ export default function CurrentTime(props: Props) {
   );
 };
 
-interface ColorProps {
+type ColorProps = {
   prepared: boolean,
 }
 const Item = styled.div`

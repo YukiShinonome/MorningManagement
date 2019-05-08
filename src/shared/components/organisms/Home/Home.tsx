@@ -9,7 +9,7 @@ type Props = {
   today: string,
   time: string,
   handleCurrentTimeUpdate: Function,
-  itemList: any,
+  itemList: {item: string, prepared: boolean}[],
   handlePreparedCheck: Function,
   prepared_all_check: boolean,
 };
