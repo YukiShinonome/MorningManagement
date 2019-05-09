@@ -37,7 +37,7 @@ export default function Home(props: Props) {
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
         <ItemListContainer>
-          {Object.keys(itemList).map((idx: string) => (
+          {Object.keys(itemList).map((val, idx) => (
             <ItemList key={idx}>
               <Item idx={idx} itemList={itemList} handlePreparedCheck={handlePreparedCheck} />
             </ItemList>
