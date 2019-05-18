@@ -5,14 +5,14 @@ import { bgColor } from "../../utils/color";
 type Props = {
   idx: number,
   itemList: {item: string, prepared: boolean}[],
-  handlePreparedCheck: any,
+  memorizedPreparedCheck: (idx: number) => void,
 };
 
 export default function CurrentTime(props: Props) {
-  const { idx, itemList, handlePreparedCheck } = props;
+  const { idx, itemList, memorizedPreparedCheck } = props;
 
   return (
-    <Item prepared={itemList[idx].prepared} onClick={() => handlePreparedCheck(idx)}>{itemList[idx].item}</Item>
+    <Item prepared={itemList[idx].prepared} onClick={() => memorizedPreparedCheck(idx)}>{itemList[idx].item}</Item>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 import { mainColor, bgColor } from "../../utils/color";
 import CurrentTime from "./CurrentTime";
@@ -8,10 +8,10 @@ type Props = {
   count: number,
   today: string,
   time: string,
-  handleCurrentTimeUpdate: Function,
   itemList: {item: string, prepared: boolean}[],
-  handlePreparedCheck: Function,
   prepared_all_check: boolean,
+  handleCurrentTimeUpdate: () => void,
+  handlePreparedCheck: (idx: number) => void,
 };
 
 export default function Home(props: Props) {
@@ -23,6 +23,7 @@ export default function Home(props: Props) {
     handlePreparedCheck,
     prepared_all_check,
   } = props;
+  const memorizedPreparedCheck = useCallback(handlePreparedCheck, [])
 
   return (
     <Root>
@@ -39,7 +40,7 @@ export default function Home(props: Props) {
         <ItemListContainer>
           {Object.keys(itemList).map((val, idx) => (
             <ItemList key={idx}>
-              <Item idx={idx} itemList={itemList} handlePreparedCheck={handlePreparedCheck} />
+              <Item idx={idx} itemList={itemList} memorizedPreparedCheck={memorizedPreparedCheck} />
             </ItemList>
           ))}
         </ItemListContainer>
