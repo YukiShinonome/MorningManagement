@@ -1,35 +1,18 @@
-import React, { useCallback } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
-import { mainColor, bgColor } from "../../utils/color";
-import CurrentTime from "./CurrentTime";
-import Item from "./Item";
+import { mainColor } from "../../utils/color";
+import CurrentTime from "../../molecules/CurrentTime";
+import NeedItem from "../../molecules/NeedItem";
 
-type Props = {
-  count: number,
-  today: string,
-  time: string,
-  itemList: {item: string, prepared: boolean}[],
-  prepared_all_check: boolean,
-  handleCurrentTimeUpdate: () => void,
-  handlePreparedCheck: (idx: number) => void,
-};
+export default function Home() {
 
-export default function Home(props: Props) {
-  const {
-    today,
-    time,
-    handleCurrentTimeUpdate,
-    itemList,
-    handlePreparedCheck,
-    prepared_all_check,
-  } = props;
-  const memorizedCurrentTimeUpdate = useCallback(handleCurrentTimeUpdate, [])
-  const memorizedPreparedCheck = useCallback(handlePreparedCheck, [])
+  // ページレベルでstateをたくさん持つべきではない
+  // moleculesにcomponentを分けてそっちにstateを直接渡すべき
 
   return (
     <Root>
       <TimeArea>
-        <CurrentTime today={today} time={time} memorizedCurrentTimeUpdate={memorizedCurrentTimeUpdate} />
+        <CurrentTime />
       </TimeArea>
       <AnimationArea>
         <Title>アニメーション</Title>
@@ -38,14 +21,7 @@ export default function Home(props: Props) {
       </AnimationArea>
       <NecessitiesArea>
         <Title>持ち物リスト</Title>
-        <ItemListContainer>
-          {Object.keys(itemList).map((val, idx) => (
-            <ItemList key={idx}>
-              <Item idx={idx} itemList={itemList} memorizedPreparedCheck={memorizedPreparedCheck} />
-            </ItemList>
-          ))}
-        </ItemListContainer>
-        <CheckOK allChecked={prepared_all_check}>準備OK!!</CheckOK>
+        <NeedItem />
       </NecessitiesArea>
     </Root>
   );
@@ -136,17 +112,4 @@ const Title = styled.h2`
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
-`;
-const ItemListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const ItemList = styled.div``;
-interface CheckProps {
-  allChecked: boolean,
-}
-const CheckOK = styled.div`
-  text-align: center;
-  font-size: 80px;
-  color: ${(props: CheckProps) => props.allChecked ? "#fff" : bgColor};
 `;
