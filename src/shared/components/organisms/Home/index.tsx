@@ -12,6 +12,6 @@ export default connect(
   }),
   (dispatch) => ({
     handleCurrentTimeUpdate: () => dispatch(currentTimeUpdate()),
-    handlePreparedCheck: (idx: any) => dispatch(preparedCheck(idx)),
+    handlePreparedCheck: (idx: number) => dispatch(preparedCheck(idx)),
   }),
 )(Home);
