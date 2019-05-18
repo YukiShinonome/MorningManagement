@@ -4,13 +4,13 @@ import styled from "styled-components";
 type Props = {
   today: string,
   time: string,
-  handleCurrentTimeUpdate: Function,
+  memorizedCurrentTimeUpdate: Function,
 };
 
 export default function CurrentTime(props: Props) {
-  const { today, time, handleCurrentTimeUpdate } = props;
+  const { today, time, memorizedCurrentTimeUpdate } = props;
 
-  setInterval(handleCurrentTimeUpdate, 1000);
+  setInterval(memorizedCurrentTimeUpdate, 1000);
 
   return (
     <Root>
