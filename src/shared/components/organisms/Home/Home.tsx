@@ -1,24 +1,18 @@
 import React, { useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 import { mainColor, bgColor } from "../../utils/color";
-import CurrentTime from "./molecules/CurrentTime";
+import CurrentTime from "./molecules";
 import Item from "./Item";
 
 type Props = {
   count: number,
-  today: string,
-  time: string,
   itemList: {item: string, prepared: boolean}[],
   prepared_all_check: boolean,
-  handleCurrentTimeUpdate: () => void,
   handlePreparedCheck: (idx: number) => void,
 };
 
 export default function Home(props: Props) {
   const {
-    today,
-    time,
-    handleCurrentTimeUpdate,
     itemList,
     handlePreparedCheck,
     prepared_all_check,
@@ -27,13 +21,12 @@ export default function Home(props: Props) {
   // ページレベルでstateをたくさん持つべきではない
   // moleculesにcomponentを分けてそっちにstateを直接渡すべき
 
-  const memorizedCurrentTimeUpdate = useCallback(handleCurrentTimeUpdate, [])
   const memorizedPreparedCheck = useCallback(handlePreparedCheck, [])
 
   return (
     <Root>
       <TimeArea>
-        <CurrentTime today={today} time={time} memorizedCurrentTimeUpdate={memorizedCurrentTimeUpdate} />
+        <CurrentTime />
       </TimeArea>
       <AnimationArea>
         <Title>アニメーション</Title>

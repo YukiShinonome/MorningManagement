@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 
 type Props = {
   today: string,
   time: string,
-  memorizedCurrentTimeUpdate: Function,
+  handleCurrentTimeUpdate: () => void,
 };
 
 export default function CurrentTime(props: Props) {
-  const { today, time, memorizedCurrentTimeUpdate } = props;
+  const { today, time, handleCurrentTimeUpdate } = props;
+
+  const memorizedCurrentTimeUpdate = useCallback(handleCurrentTimeUpdate, [])
 
   setInterval(memorizedCurrentTimeUpdate, 1000);
 
