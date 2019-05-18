@@ -8,7 +8,7 @@ type Props = {
   handlePreparedCheck: (idx: number) => void,
 };
 
-export default function CurrentTime(props: Props) {
+export default function NeedItem(props: Props) {
   const {
     itemList,
     handlePreparedCheck,
