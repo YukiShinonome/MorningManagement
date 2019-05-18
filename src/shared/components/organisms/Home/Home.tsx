@@ -23,12 +23,13 @@ export default function Home(props: Props) {
     handlePreparedCheck,
     prepared_all_check,
   } = props;
+  const memorizedCurrentTimeUpdate = useCallback(handleCurrentTimeUpdate, [])
   const memorizedPreparedCheck = useCallback(handlePreparedCheck, [])
 
   return (
     <Root>
       <TimeArea>
-        <CurrentTime today={today} time={time} handleCurrentTimeUpdate={handleCurrentTimeUpdate} />
+        <CurrentTime today={today} time={time} memorizedCurrentTimeUpdate={memorizedCurrentTimeUpdate} />
       </TimeArea>
       <AnimationArea>
         <Title>アニメーション</Title>
