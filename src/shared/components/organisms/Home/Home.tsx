@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 import { mainColor, bgColor } from "../../utils/color";
-import CurrentTime from "./CurrentTime";
+import CurrentTime from "./molecules/CurrentTime";
 import Item from "./Item";
 
 type Props = {
@@ -23,6 +23,10 @@ export default function Home(props: Props) {
     handlePreparedCheck,
     prepared_all_check,
   } = props;
+
+  // ページレベルでstateをたくさん持つべきではない
+  // moleculesにcomponentを分けてそっちにstateを直接渡すべき
+
   const memorizedCurrentTimeUpdate = useCallback(handleCurrentTimeUpdate, [])
   const memorizedPreparedCheck = useCallback(handlePreparedCheck, [])
 
