@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import CurrentTime from './CurrentTime'
-import { currentTimeUpdate } from '../../../../redux/modules/home'
-import { homeSelector } from '../../../../redux/modules/reducer';
+import { currentTimeUpdate } from '../../../redux/modules/home'
+import { homeSelector } from '../../../redux/modules/reducer';
 
 export default connect(
   (state) => ({
